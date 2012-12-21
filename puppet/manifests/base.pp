@@ -7,9 +7,9 @@ include postgres
 # RVM and Ruby
 include rvm
 
+rvm::system_user { 'vagrant': }
 rvm_system_ruby { 'ruby-1.9.3-p327':
-  ensure => 'present',
-  default_use => true;
+  ensure => 'present'
 }
 
 # other dev tools like Node, ...

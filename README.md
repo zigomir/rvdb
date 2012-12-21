@@ -24,6 +24,6 @@ First one may take time because it will go and download ubuntu and set it all up
     vagrant up
     vagrant ssh
 
-## Resources
-* http://davidwinter.me/articles/2012/03/04/introduction-to-puppet/
-* http://net.tutsplus.com/tutorials/php/vagrant-what-why-and-how/
+## Dependencies
+
+	https://github.com/blt04/puppet-rvm

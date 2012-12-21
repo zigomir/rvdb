@@ -3,7 +3,8 @@ class misc {
   $miscPackages = [
     "git",
     "nodejs",
-    "npm"
+    "npm",
+    "vim"
   ]
 
   package { $miscPackages:
