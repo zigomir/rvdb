@@ -22,7 +22,7 @@ Vagrant::Config.run do |config|
 
   # Set the Timezone and locale
   config.vm.provision :shell, :inline => "echo \"Europe/Ljubljana\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
-  config.vm.provision :shell, :inline => "sudo update-locale LANG=en_US.UTF-8 LC_MESSAGES=POSIX"
+  config.vm.provision :shell, :inline => "locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8"
 
   # Update the server
   config.vm.provision :shell, :inline => "apt-get update --fix-missing"
