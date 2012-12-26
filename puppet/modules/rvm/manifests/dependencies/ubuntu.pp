@@ -19,5 +19,7 @@ class rvm::dependencies::ubuntu {
   if ! defined(Package['autoconf'])             { package { 'autoconf':             ensure => installed } }
   if ! defined(Package['libc6-dev'])            { package { 'libc6-dev':            ensure => installed } }
   if ! defined(Package['libpq-dev'])            { package { 'libpq-dev':            ensure => installed } } # added for postgres
+  if ! defined(Package['libmysql-ruby'])        { package { 'libmysql-ruby':        ensure => installed } } # added for mysql
+  if ! defined(Package['libmysqlclient-dev'])   { package { 'libmysqlclient-dev':   ensure => installed } } # added for mysql
 
 }

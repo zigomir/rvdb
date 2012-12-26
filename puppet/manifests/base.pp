@@ -1,7 +1,7 @@
 Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
 # Database servers
-# include mysql
+include mysql
 
 # install client and server, create user and set encodings
 class {'postgresql':  }
