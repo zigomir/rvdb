@@ -2,13 +2,7 @@
 
 It's based on Vagrant and Ubuntu 12.04 x64 Server Edition (Precise)
 
-# Prerequisites
-
-* Install Ruby https://rvm.io/rvm/install
-* Install VirtualBox https://www.virtualbox.org/wiki/Downloads
-* Install Vagrant
-
-        gem install vagrant
+Install Vagrant http://downloads.vagrantup.com/tags/v1.0.5
 
 # Setting up machine
 
