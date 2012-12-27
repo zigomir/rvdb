@@ -15,6 +15,10 @@ class mysql {
     require => package['mysql-server']
   }
 
+  exec { "mysql -u root -proot -e \"GRANT ALL ON *.* to root@'localhost' IDENTIFIED BY 'root';\"":
+    require => package['mysql-server']
+  }
+
   file { 'my.cnf':
     path    => '/etc/mysql/my.cnf',
     ensure  => file,
