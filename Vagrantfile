@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 Vagrant::Config.run do |config|
   config.vm.box = "rvdb"
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # VirtualBox memory
   # config.vm.customize ["modifyvm", :id, "--memory", 512]

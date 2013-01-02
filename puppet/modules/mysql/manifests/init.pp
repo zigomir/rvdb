@@ -12,11 +12,11 @@ class mysql {
   }
 
   exec { "mysql -u root -proot -e \"GRANT ALL ON *.* to root@'192.168.2.1' IDENTIFIED BY 'root';\"":
-    require => package['mysql-server']
+    require => Package['mysql-server']
   }
 
   exec { "mysql -u root -proot -e \"GRANT ALL ON *.* to root@'localhost' IDENTIFIED BY 'root';\"":
-    require => package['mysql-server']
+    require => Package['mysql-server']
   }
 
   file { 'my.cnf':

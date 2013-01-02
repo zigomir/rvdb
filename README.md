@@ -2,16 +2,15 @@
 
 It's based on Vagrant and Ubuntu 12.04 x64 Server Edition (Precise)
 
-Install Vagrant http://downloads.vagrantup.com/tags/v1.0.5
+Install [Vagrant](http://www.vagrantup.com/)
 
 # Setting up machine
 
 ### Vagrantfile
 
-    IP, share folder and ports
+Set IP, share folder and ports
 
 Open up private/puppet/manifests/base.pp file and comment out projects/packages you don't need.
-Also add new ones that you need and send a pull request or just make a fork of this repo.
 
 First one may take time because it will go and download ubuntu and set it all up
 
