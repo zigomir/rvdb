@@ -16,7 +16,7 @@ Vagrant::Config.run do |config|
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
   config.vm.forward_port 3000, 3000 # rails
-  config.vm.forward_port 4567, 4567 # middleman
+  config.vm.forward_port 4567, 4567 # sinatra/middleman
   config.vm.forward_port 1234, 1234 # ruby remote debugger
 
 
