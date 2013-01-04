@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant::Config.run do |config|
-  config.vm.box = "rvdb"
+  config.vm.box     = "rvdb"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # VirtualBox memory
@@ -16,6 +16,7 @@ Vagrant::Config.run do |config|
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
   config.vm.forward_port 3000, 3000 # rails
+  config.vm.forward_port 4567, 4567 # middleman
   config.vm.forward_port 1234, 1234 # ruby remote debugger
 
 
@@ -29,8 +30,8 @@ Vagrant::Config.run do |config|
   config.vm.provision :shell, :inline => "apt-get update --fix-missing"
   # run puppet modules
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "puppet/manifests"
-    puppet.module_path = "puppet/modules"
     puppet.manifest_file  = "base.pp"
+    puppet.manifests_path = "puppet/manifests"
+    puppet.module_path    = "puppet/modules"
   end
 end
