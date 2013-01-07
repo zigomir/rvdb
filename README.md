@@ -8,15 +8,16 @@ Install [Vagrant](http://www.vagrantup.com/)
 
 ### Vagrantfile
 
-Set IP, share folder and ports
+	cp vagrantconfig.yml vagrantconfig_local.yml
 
-Open up private/puppet/manifests/base.pp file and comment out projects/packages you don't need.
+Set your settings inside **vagrantconfig_local.yml**
 
 First one may take time because it will go and download ubuntu and set it all up
 
     vagrant up
     vagrant ssh
 
-## Dependencies
+# Sources
 
 	https://github.com/blt04/puppet-rvm
+	https://github.com/akumria/puppet-postgresql
