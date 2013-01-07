@@ -1,0 +1,23 @@
+# Default config for Vagrant
+
+# Don't change this; use vagrantconfig_local.yml to override these
+# settings instead.
+
+box_name: "rvdb"
+box_url: "http://files.vagrantup.com/precise64.box"
+
+memory: 512 # megabytes for VM
+guest_ip: "192.168.2.60"
+
+host_development_dir: "~/development"
+guest_development_dir: "~/development"
+
+ports:
+ - {guest: 3000, host: 3000}
+ - {guest: 4567, host: 4567}
+ - {guest: 1234, host: 1234}
+
+timezone: "Europe/Ljubljana"
+
+mysql_user: "root"
+mysql_password: "root"

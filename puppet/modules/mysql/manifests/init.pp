@@ -1,22 +1,24 @@
 class mysql {
-  $password = "root"
+
   package { "mysql-client": ensure => installed }
   package { "mysql-server": ensure => installed }
 
-  exec { "Set MySQL server root password":
-    subscribe => [ Package["mysql-server"], Package["mysql-client"] ],
+  exec { "Set MySQL user and password":
+    subscribe   => [ Package["mysql-server"], Package["mysql-client"] ],
     refreshonly => true,
-    unless => "mysqladmin -uroot -p$password status",
-    path => "/bin:/usr/bin",
-    command => "mysqladmin -uroot password $password",
+    command     => "mysqladmin -u$mysql_user password $mysql_password",
+    unless      => "mysqladmin -u$mysql_user -p$mysql_password status",
+    path        => "/bin:/usr/bin",
   }
 
-  exec { "mysql -u root -proot -e \"GRANT ALL ON *.* to root@'192.168.2.1' IDENTIFIED BY 'root';\"":
-    require => Package['mysql-server']
+  exec { "mysql -u $mysql_user -p$mysql_password -e \"GRANT ALL ON *.* to $mysql_user@'192.168.2.1' IDENTIFIED BY $mysql_password;\"":
+    require => Package['mysql-server'],
+    unless  => "mysql -u $mysql_user -p$mysql_password -e \"SHOW GRANTS FOR root@'192.168.2.1';\""
   }
 
-  exec { "mysql -u root -proot -e \"GRANT ALL ON *.* to root@'localhost' IDENTIFIED BY 'root';\"":
-    require => Package['mysql-server']
+  exec { "mysql -u $mysql_user -p$mysql_password -e \"GRANT ALL ON *.* to $mysql_user@'localhost' IDENTIFIED BY $mysql_password;\"":
+    require => Package['mysql-server'],
+    unless  => "mysql -u $mysql_user -p$mysql_password -e \"SHOW GRANTS FOR root@'localhost';\""
   }
 
   file { 'my.cnf':

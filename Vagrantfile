@@ -1,29 +1,43 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+require "yaml"
+
+_config = YAML.load(File.open("vagrantconfig.yml"))
+
+# Local-specific/not-git-managed config -- vagrantconfig_local.yml
+begin
+  _config = YAML.load(File.open("vagrantconfig_local.yml"))
+
+  # No vagrantconfig_local.yml found -- that's OK; just use the defaults.
+  rescue Errno::ENOENT
+end
+
+CONF = _config
+
 Vagrant::Config.run do |config|
-  config.vm.box     = "rvdb"
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box     = CONF['box_name']
+  config.vm.box_url = CONF['box_url']
 
   # VirtualBox memory
-  # config.vm.customize ["modifyvm", :id, "--memory", 512]
+  config.vm.customize ["modifyvm", :id, "--memory", CONF['memory']]
 
   # Set IP you want to use for VirtualMachine
-  config.vm.network :hostonly, "192.168.2.60"
+  config.vm.network :hostonly, CONF['guest_ip']
 
   # Set the default project share to use nfs
-  config.vm.share_folder "v-data", "~/development", "~/development"
+  config.vm.share_folder "v-data", CONF['host_development_dir'], CONF['guest_development_dir']
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
-  config.vm.forward_port 3000, 3000 # rails
-  config.vm.forward_port 4567, 4567 # sinatra/middleman
-  config.vm.forward_port 1234, 1234 # ruby remote debugger
+  CONF['ports'].each do |port|
+    config.vm.forward_port port['guest'], port['host']
+  end
 
 
   # Puppet Provisioning #
 
   # Set the Timezone and locale
-  config.vm.provision :shell, :inline => "echo \"Europe/Ljubljana\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
+  config.vm.provision :shell, :inline => "echo \"#{CONF['timezone']}\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
   config.vm.provision :shell, :inline => "locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8"
 
   # Update the server
@@ -33,5 +47,9 @@ Vagrant::Config.run do |config|
     puppet.manifest_file  = "base.pp"
     puppet.manifests_path = "puppet/manifests"
     puppet.module_path    = "puppet/modules"
+    puppet.facter         = {
+      "mysql_user"        => CONF['mysql_user'],
+      "mysql_password"    => CONF['mysql_password']
+    }
   end
 end
