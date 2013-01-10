@@ -11,14 +11,14 @@ class mysql {
     path        => "/bin:/usr/bin",
   }
 
-  exec { "mysql -u $mysql_user -p$mysql_password -e \"GRANT ALL ON *.* to $mysql_user@'192.168.2.1' IDENTIFIED BY $mysql_password;\"":
-    require => Package['mysql-server'],
-    unless  => "mysql -u $mysql_user -p$mysql_password -e \"SHOW GRANTS FOR root@'192.168.2.1';\""
+  exec { "mysql -u $mysql_user -p$mysql_password -e \"GRANT ALL ON *.* to $mysql_user@'192.168.2.1' IDENTIFIED BY '$mysql_password';\"":
+    unless  => "mysql -u $mysql_user -p$mysql_password -e \"SHOW GRANTS FOR root@'192.168.2.1';\"",
+    require  => [Package["mysql-server"], Exec["Set MySQL server root password"]],
   }
 
-  exec { "mysql -u $mysql_user -p$mysql_password -e \"GRANT ALL ON *.* to $mysql_user@'localhost' IDENTIFIED BY $mysql_password;\"":
-    require => Package['mysql-server'],
-    unless  => "mysql -u $mysql_user -p$mysql_password -e \"SHOW GRANTS FOR root@'localhost';\""
+  exec { "mysql -u $mysql_user -p$mysql_password -e \"GRANT ALL ON *.* to $mysql_user@'localhost' IDENTIFIED BY '$mysql_password';\"":
+    unless  => "mysql -u $mysql_user -p$mysql_password -e \"SHOW GRANTS FOR root@'localhost';\"",
+    require  => [Package["mysql-server"], Exec["Set MySQL server root password"]],
   }
 
   file { 'my.cnf':
