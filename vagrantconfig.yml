@@ -3,7 +3,7 @@
 # Don't change this; use vagrantconfig_local.yml to override these
 # settings instead.
 
-box_name: "rvdb"
+box_name: "precise64"
 box_url: "http://files.vagrantup.com/precise64.box"
 
 memory: 512 # megabytes for VM
