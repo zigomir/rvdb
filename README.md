@@ -1,10 +1,17 @@
 # Ruby Vagrant Development Box
 
-It's based on Vagrant and Ubuntu 12.04 x64 Server Edition (Precise)
+Based on Vagrant and Ubuntu 12.04 x64 Server Edition (Precise)
 
-Install [Vagrant](http://www.vagrantup.com/)
+What you will get?
+
+* mysql and postgres database
+* rvm and ruby-1.9.3-p327
+* nodejs and npm
+* git
 
 # Setting up machine
+
+First install [VirtualBox](https://www.virtualbox.org/) and [Vagrant](http://www.vagrantup.com/)
 
 ### Vagrantfile
 
@@ -16,6 +23,9 @@ First one may take time because it will go and download ubuntu and set it all up
 
     vagrant up
     vagrant ssh
+    
+*vagrant ssh* won't work on Windows. Use [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
+and connect to guest ip you've set up in **vagrantconfig_local.yml** file. (Username and password are vagrant/vagrant)
 
 # Sources
 
