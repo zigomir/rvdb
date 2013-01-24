@@ -33,9 +33,7 @@ Vagrant::Config.run do |config|
     config.vm.forward_port port['guest'], port['host']
   end
 
-
   # Puppet Provisioning #
-
   # Set the Timezone and locale
   config.vm.provision :shell, :inline => "echo \"#{CONF['timezone']}\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
   config.vm.provision :shell, :inline => "locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8"
@@ -47,6 +45,7 @@ Vagrant::Config.run do |config|
     puppet.manifest_file  = "base.pp"
     puppet.manifests_path = "manifests"
     puppet.module_path    = "modules"
+    puppet.options        = %w[ --libdir=\\modules/puppet-rbenv/lib ]
     puppet.facter         = {
       "mysql_user"        => CONF['mysql_user'],
       "mysql_password"    => CONF['mysql_password']
