@@ -45,8 +45,8 @@ Vagrant::Config.run do |config|
   # run puppet modules
   config.vm.provision :puppet do |puppet|
     puppet.manifest_file  = "base.pp"
-    puppet.manifests_path = "puppet/manifests"
-    puppet.module_path    = "puppet/modules"
+    puppet.manifests_path = "manifests"
+    puppet.module_path    = "modules"
     puppet.facter         = {
       "mysql_user"        => CONF['mysql_user'],
       "mysql_password"    => CONF['mysql_password']
