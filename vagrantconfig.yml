@@ -13,9 +13,9 @@ host_development_dir: "~/development"
 guest_development_dir: "~/development"
 
 ports:
- - {guest: 3000, host: 3000}
- - {guest: 4567, host: 4567}
- - {guest: 1234, host: 1234}
+ - {guest: 3000, host: 3000} # rails default
+ - {guest: 4567, host: 4567} # sinatra
+ - {guest: 1234, host: 1234} # middleman, ruby-debug-ide
 
 timezone: "Europe/Ljubljana"
 
