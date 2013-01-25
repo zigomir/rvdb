@@ -19,10 +19,21 @@ Install [Vagrant](http://www.vagrantup.com/) and [VirtualBox](https://www.virtua
 
 Set your settings inside **vagrantconfig_local.yml**
 
+Init and clone submodules
+
+    git submodule init
+    git submodule update
+
 First one may take time because it will go and download ubuntu and set it all up
 
     vagrant up
     vagrant ssh
+
+# Adding rbenv submodule
+
+This one needs to be in modules/rbenv and not in modules/puppet-rbenv or else it won't work properly
+
+    git submodule add git://github.com/alup/puppet-rbenv.git modules/rbenv
 
 # Possible issues
 
