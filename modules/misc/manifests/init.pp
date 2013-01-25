@@ -4,7 +4,8 @@ class misc {
     "git",
     "nodejs",
     "npm",
-    "vim"
+    "vim",
+    "imagemagick"
   ]
 
   package { $miscPackages:
