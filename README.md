@@ -19,9 +19,14 @@ First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http:
 
 Set your settings inside **vagrantconfig_local.yml**
 
-First one may take time because it will go and download ubuntu and set it all up
+
+# Build mah machine
+Than from your terminal inside this project type
 
     vagrant up
+
+First run may take time because it will go and download Ubuntu and set it all up
+
     vagrant ssh
     
 *vagrant ssh* won't work on Windows. Use [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
