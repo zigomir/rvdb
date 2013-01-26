@@ -9,11 +9,9 @@ Based on Vagrant and Precise64 (Ubuntu 12.04 x64 Server Edition)
 * git, node, npm, vim
 * casperjs
 
-Install [Vagrant](http://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/)
-
 # Setting up machine
 
-First install [VirtualBox](https://www.virtualbox.org/) and [Vagrant](http://www.vagrantup.com/)
+First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http://www.vagrantup.com/)
 
 ### Vagrantfile
 
