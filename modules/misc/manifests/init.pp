@@ -6,7 +6,8 @@ class misc {
     "npm",
     "vim",
     "imagemagick",
-    "dos2unix"
+    "dos2unix",      # for windows hack
+    "libsqlite3-dev" # for ruby sqlite 3 gem
   ]
 
   package { $miscPackages:
