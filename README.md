@@ -32,7 +32,7 @@ and connect to guest ip you've set up in **vagrantconfig_local.yml** file. (User
 ## On Windows host machine
 Error with .rbenvrc
 
-    sudo apt-get install dos2unix
+    cd
     dos2unix .rbenvrc
     source .rbenvrc
 
