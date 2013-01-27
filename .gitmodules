@@ -1,3 +1,6 @@
-[submodule "modules/puppet-rbenv"]
-	path = modules/puppet-rbenv
+[submodule "modules/rbenv"]
+	path = modules/rbenv
 	url = git://github.com/alup/puppet-rbenv.git
+[submodule "modules/torquebox"]
+	path = modules/torquebox
+	url = git://github.com/zigomir/puppet-torquebox.git

@@ -1,0 +1,24 @@
+# Default config for Vagrant
+
+# Don't change this; use vagrantconfig_local.yml to override these
+# settings instead.
+
+box_name: "precise64"
+box_url: "http://files.vagrantup.com/precise64.box"
+ruby: "torquebox"
+
+memory: 1024 # megabytes for VM
+guest_ip: "192.168.2.60"
+
+host_development_dir: "~/development"
+guest_development_dir: "~/development"
+
+ports:
+ - {guest: 3000, host: 3000} # rails default
+ - {guest: 8080, host: 8080} # torquebox default
+ - {guest: 9990, host: 9990} # jBoss AS admin console
+
+timezone: "Europe/Ljubljana"
+
+mysql_user: "root"
+mysql_password: "root"

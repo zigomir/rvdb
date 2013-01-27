@@ -41,14 +41,15 @@ Vagrant::Config.run do |config|
   # Update the server
   config.vm.provision :shell, :inline => "apt-get update --fix-missing"
   # run puppet modules
-  config.vm.provision :puppet, :module_path => "modules" do |puppet|
+  config.vm.provision :puppet, :module_path => "../modules" do |puppet|
     puppet.manifest_file  = "base.pp"
-    puppet.manifests_path = "manifests"
-    puppet.module_path    = "modules"
+    puppet.manifests_path = "../manifests"
     puppet.options        = %w[ --libdir=\\$modulepath/rbenv/lib ]
     puppet.facter         = {
-      "mysql_user"        => CONF['mysql_user'],
-      "mysql_password"    => CONF['mysql_password']
+      :ruby           => CONF['ruby'],
+      :mysql_user     => CONF['mysql_user'],
+      :mysql_password => CONF['mysql_password'],
+      :casperjs       => CONF['casperjs']
     }
   end
 end
