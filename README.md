@@ -45,7 +45,7 @@ and connect to guest ip you've set up in **vagrantconfig_local.yml** file. (User
 
 First update all submodules
 
-    git submodule foreach git pull
+    git submodule foreach git pull origin master
 
 Example of adding submodules
 
