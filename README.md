@@ -19,7 +19,7 @@ First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http:
 
 If you don't have yet symlink for Vagrantfile from mri (or other) directory, create it
 
-    ln -s Vagrantfile ../Vagrantfile # *nix
+    ln -s ../Vagrantfile Vagrantfile  # *nix
     mklink Vagrantfile ..\Vagrantfile # Winodws (with admin privileges)
 
 Copy and edit settings file
@@ -45,7 +45,8 @@ and connect to guest ip you've set up in **vagrantconfig_local.yml** file. (User
 
 First update all submodules
 
-    git submodule foreach git pull origin master
+    git submodule init
+    git submodule update
 
 Example of adding submodules
 

@@ -25,7 +25,7 @@ Vagrant::Config.run do |config|
   config.vm.network :hostonly, CONF['guest_ip']
 
   # Set the default project share to use nfs
-  config.vm.share_folder "v-data", CONF['host_development_dir'], CONF['guest_development_dir']
+  config.vm.share_folder "v-data", CONF['host_development_dir'], CONF['guest_development_dir'], :nfs => true
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
