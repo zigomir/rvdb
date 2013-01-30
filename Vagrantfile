@@ -18,6 +18,9 @@ Vagrant::Config.run do |config|
   config.vm.box     = CONF['box_name']
   config.vm.box_url = CONF['box_url']
 
+  # Set unique name for VirtualBox from ruby implementation
+  config.vm.customize ["modifyvm", :id, "--name", CONF['ruby']]
+
   # VirtualBox memory
   config.vm.customize ["modifyvm", :id, "--memory", CONF['memory']]
 
