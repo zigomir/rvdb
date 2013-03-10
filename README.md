@@ -56,6 +56,19 @@ Example of adding submodules
 
 If you want to push back to submodules uzse git@github.com:zigomir instead of git://github.com/zigomir
 
+## Updating Ruby
+
+Connect to your box and do this
+
+	cd ~/.rbenv/plugins/ruby-build
+	git pull --rebase
+
+Than update version in your base manifest file, example:
+
+	rbenv::compile { '2.0.0-p0':
+
+and than run `vagrant provison`
+
 # Possible issues
 
 ## On Windows host machine

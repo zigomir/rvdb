@@ -8,7 +8,7 @@ if $ruby == 'mri' {
     home  => '/home/vagrant'
   }
 
-  rbenv::compile { '1.9.3-p374':
+  rbenv::compile { '2.0.0-p0':
     user => 'vagrant',
     home => '/home/vagrant'
   }
