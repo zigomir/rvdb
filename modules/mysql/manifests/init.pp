@@ -3,7 +3,6 @@ class mysql {
   package { 'mysql-client': ensure => installed }
   package { 'mysql-server': ensure => installed }
 
-  # package { 'libpq-dev':            ensure => installed } # added for postgres
   # added for mysql and ruby integration
   package { 'libmysql-ruby':        ensure => installed }
   package { 'libmysqlclient-dev':   ensure => installed }
@@ -11,18 +10,18 @@ class mysql {
   exec { "set-mysql-user-and-password":
     subscribe   => [ Package["mysql-server"], Package["mysql-client"] ],
     refreshonly => true,
-    command     => "mysqladmin -u$mysql_user password $mysql_password",
-    unless      => "mysqladmin -u$mysql_user -p$mysql_password status",
+    command     => "mysqladmin -uroot password root",
+    unless      => "mysqladmin -uroot -proot status",
     path        => "/bin:/usr/bin",
   }
 
-  exec { "mysql -u $mysql_user -p$mysql_password -e \"GRANT ALL ON *.* to $mysql_user@'192.168.2.1' IDENTIFIED BY '$mysql_password';\"":
-    unless  => "mysql -u $mysql_user -p$mysql_password -e \"SHOW GRANTS FOR root@'192.168.2.1';\"",
+  exec { "mysql -u root -proot -e \"GRANT ALL ON *.* to root@'192.168.2.1' IDENTIFIED BY 'root';\"":
+    unless  => "mysql -u root -proot -e \"SHOW GRANTS FOR root@'192.168.2.1';\"",
     require  => [Package['mysql-server'], Exec['set-mysql-user-and-password']],
   }
 
-  exec { "mysql -u $mysql_user -p$mysql_password -e \"GRANT ALL ON *.* to $mysql_user@'localhost' IDENTIFIED BY '$mysql_password';\"":
-    unless  => "mysql -u $mysql_user -p$mysql_password -e \"SHOW GRANTS FOR root@'localhost';\"",
+  exec { "mysql -u root -proot -e \"GRANT ALL ON *.* to root@'localhost' IDENTIFIED BY 'root';\"":
+    unless  => "mysql -u root -proot -e \"SHOW GRANTS FOR root@'localhost';\"",
     require  => [Package['mysql-server'], Exec['set-mysql-user-and-password']],
   }
 

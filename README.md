@@ -4,18 +4,16 @@ Based on Vagrant and Precise64 (Ubuntu 12.04 x64 Server Edition)
 
 ## Installed software
 
-* rbenv and ruby-1.9.3-pXXX
-* mysql
-* git, node, npm, vim
-* casperjs
+* rbenv and ruby-2.0.0-p0 or 1.9.3-pXXX
+* postgres or mysql
+* git, node, vim
+* optional, not in by default: casperjs, todo...
 
 # Setting up machine
 
 First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http://www.vagrantup.com/)
 
 ## Vagrantfile
-
-    cd mri
 
 If you don't have yet symlink for Vagrantfile from mri (or other) directory, create it
 
@@ -30,7 +28,7 @@ Set your settings inside **vagrantconfig_local.yml**
 
 
 # Build mah machine
-Than from your terminal inside this project type
+Change directory to your project folder (example: `cd rvdb/mri`)
 
     vagrant up
 
@@ -41,16 +39,17 @@ First run may take time because it will go and download Ubuntu and set it all up
 *vagrant ssh* won't work on Windows. Use [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
 and connect to guest ip you've set up in **vagrantconfig_local.yml** file. (Username and password are vagrant/vagrant)
 
-## Dealing with puppet modules from Git(Hub)
+## Puppet modules with git submodules
 
 First update all submodules
 
     git submodule init
     git submodule update
 
-Example of adding submodules
+Don't add puppet-rbenv to modules/puppet-rbenv ! it won't work because puppet module name must be the same like directory structure.
 
-    # don't add puppet-rbenv to modules/puppet-rbenv ! it won't work
+Example of adding submodules:
+
     git submodule add git://github.com/alup/puppet-rbenv.git modules/rbenv
     git submodule add git://github.com/zigomir/puppet-torquebox.git modules/torquebox
     git submodule add git://github.com/akumria/puppet-postgresql.git modules/postgresql
@@ -69,6 +68,12 @@ Than update version in your base manifest file, example:
 	rbenv::compile { '2.0.0-p0':
 
 and than run `vagrant provison`
+
+# Passwords
+
+- linux user: `vagrant/vagrant`
+- postgres: `vagrant/vagrant`
+- mysql: `root/root`
 
 # Possible issues
 
@@ -94,5 +99,4 @@ If it's not what 1.9.3-pXXX just say
 
 ## TODO
 
-* install only requirements for given database
-* find a good module for installing postgres with UTF-8 encodings
+- find a way to preserve unix line encodings for .rbenvrc and remove dos2unix package

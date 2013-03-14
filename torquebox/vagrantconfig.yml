@@ -3,9 +3,13 @@
 # Don't change this; use vagrantconfig_local.yml to override these
 # settings instead.
 
+name: "torquebox"
+
+ruby: "torquebox"
+database: "postgres" # or "mysql"
+
 box_name: "precise64"
 box_url: "http://files.vagrantup.com/precise64.box"
-ruby: "torquebox"
 
 memory: 1024 # megabytes for VM
 guest_ip: "192.168.2.60"
@@ -19,6 +23,3 @@ ports:
  - {guest: 9990, host: 9990} # jBoss AS admin console
 
 timezone: "Europe/Ljubljana"
-
-mysql_user: "root"
-mysql_password: "root"

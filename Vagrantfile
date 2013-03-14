@@ -51,10 +51,8 @@ Vagrant::Config.run do |config|
     puppet.options        = %w[ --libdir=\\$modulepath/rbenv/lib ]
     puppet.facter         = {
       :ruby           => CONF['ruby'],
-      #:casperjs       => CONF['casperjs'], TODO delete?
       :database       => CONF['database'],
-      :mysql_user     => CONF['mysql_user'],    # rename into db_user
-      :mysql_password => CONF['mysql_password'] # rename into db_password
+      :ruby_version   => CONF['ruby_version']
     }
   end
 end

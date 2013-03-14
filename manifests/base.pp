@@ -8,7 +8,7 @@ if $ruby == 'mri' {
     home  => '/home/vagrant'
   }
 
-  rbenv::compile { '2.0.0-p0':
+  rbenv::compile { $ruby_version:
     user => 'vagrant',
     home => '/home/vagrant'
   }
@@ -45,8 +45,4 @@ if $database == 'postgres' {
   package { 'libpq-dev':
     ensure => present
   }
-}
-
-if $casperjs {
-  include casperjs
 }
