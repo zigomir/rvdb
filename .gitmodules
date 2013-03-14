@@ -4,3 +4,6 @@
 [submodule "modules/torquebox"]
 	path = modules/torquebox
 	url = git://github.com/zigomir/puppet-torquebox.git
+[submodule "modules/postgresql"]
+	path = modules/postgresql
+	url = git://github.com/akumria/puppet-postgresql.git

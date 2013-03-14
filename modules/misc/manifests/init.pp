@@ -1,14 +1,10 @@
 class misc {
 
   $miscPackages = [
-    "git",
-    "nodejs",
-    "npm",
+    "dos2unix",
     "vim",
-    "imagemagick",
-    "dos2unix",       # for windows hack
-    "libsqlite3-dev", # for ruby sqlite 3 gem
-    "yui-compressor"  # for minifying with catapult
+    "git",
+    "nodejs"
   ]
 
   package { $miscPackages:

@@ -20,7 +20,7 @@ First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http:
 If you don't have yet symlink for Vagrantfile from mri (or other) directory, create it
 
     ln -s ../Vagrantfile Vagrantfile  # *nix
-    mklink Vagrantfile ..\Vagrantfile # Winodws (with admin privileges)
+    mklink Vagrantfile ..\Vagrantfile # Windows (with admin privileges)
 
 Copy and edit settings file
 
@@ -53,6 +53,7 @@ Example of adding submodules
     # don't add puppet-rbenv to modules/puppet-rbenv ! it won't work
     git submodule add git://github.com/alup/puppet-rbenv.git modules/rbenv
     git submodule add git://github.com/zigomir/puppet-torquebox.git modules/torquebox
+    git submodule add git://github.com/akumria/puppet-postgresql.git modules/postgresql
 
 If you want to push back to submodules uzse git@github.com:zigomir instead of git://github.com/zigomir
 
