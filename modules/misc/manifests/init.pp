@@ -1,7 +1,6 @@
 class misc {
 
   $miscPackages = [
-    "dos2unix",
     "vim",
     "git",
     "nodejs"

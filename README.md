@@ -81,8 +81,14 @@ and than run `vagrant provison`
 Error with .rbenvrc
 
     cd
+	sudo apt-get install dos2unix
     dos2unix .rbenvrc
     source .rbenvrc
+
+Always set CRLF to false, otherwise you'll get messed up bash files
+
+	git config --global core.eol lf
+	git config --global core.autocrlf false
 
 ## Check selected ruby version
 
@@ -99,4 +105,5 @@ If it's not what 1.9.3-pXXX just say
 
 ## TODO
 
-- find a way to preserve unix line encodings for .rbenvrc and remove dos2unix package
+- try re adding TB because of newlines
+- better structure for new projects
