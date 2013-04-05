@@ -28,6 +28,11 @@ Set your settings inside **vagrantconfig_local.yml**
 
 
 # Build mah machine
+Update git submodules
+
+    git submodule init
+    git submodule update
+
 Change directory to your project folder (example: `cd rvdb/mri`)
 
     vagrant up
