@@ -12,7 +12,6 @@ end
 
 CONF = _config
 
-#Vagrant::Config.run do |config|
 Vagrant.configure('2') do |config|
   config.vm.box     = CONF['box_name']
   config.vm.box_url = CONF['box_url']
