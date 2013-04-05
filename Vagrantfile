@@ -12,28 +12,31 @@ end
 
 CONF = _config
 
-Vagrant::Config.run do |config|
+#Vagrant::Config.run do |config|
+Vagrant.configure('2') do |config|
   config.vm.box     = CONF['box_name']
   config.vm.box_url = CONF['box_url']
 
-  # Set unique name for VirtualBox from ruby implementation
-  config.vm.customize ['modifyvm', :id, '--name', CONF['name']]
+  config.vm.provider :virtualbox do |vb|
+    # Set unique name for VirtualBox from ruby implementation
+    vb.customize ['modifyvm', :id, '--name', CONF['name']]
 
-  # VirtualBox memory
-  config.vm.customize ['modifyvm', :id, '--memory', CONF['memory']]
+    # VirtualBox memory
+    vb.customize ['modifyvm', :id, '--memory', CONF['memory']]
+  end
 
   # Set IP you want to use for VirtualMachine
-  config.vm.network :hostonly, CONF['guest_ip']
+  config.vm.network :private_network, ip: CONF['guest_ip']
 
   # Set the default project share to use nfs
-  config.vm.share_folder 'v-data', CONF['host_development_dir'],
-                                   CONF['guest_development_dir'],
-                                   :nfs => (RUBY_PLATFORM =~ /linux/ or RUBY_PLATFORM =~ /darwin/)
+  config.vm.synced_folder CONF['host_development_dir'], 
+                          CONF['guest_development_dir'],
+                          :nfs => (RUBY_PLATFORM =~ /linux/ or RUBY_PLATFORM =~ /darwin/)
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
   CONF['ports'].each do |port|
-    config.vm.forward_port port['guest'], port['host']
+    config.vm.network :forwarded_port, guest: port['guest'], host: port['host']
   end
 
   # Puppet Provisioning #
@@ -48,7 +51,6 @@ Vagrant::Config.run do |config|
   config.vm.provision :puppet, :module_path => '../modules' do |puppet|
     puppet.manifest_file  = 'base.pp'
     puppet.manifests_path = '../manifests'
-    puppet.options        = %w[ --libdir=\\$modulepath/rbenv/lib ]
     puppet.facter         = {
       :ruby           => CONF['ruby'],
       :database       => CONF['database'],

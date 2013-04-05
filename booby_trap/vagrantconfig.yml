@@ -16,7 +16,7 @@ memory: 512 # megabytes for VM
 guest_ip: "192.168.2.60"
 
 host_development_dir: "~/development"
-guest_development_dir: "~/development"
+guest_development_dir: "/home/vagrant/development"
 
 ports:
   - {guest: 3000, host: 3000}

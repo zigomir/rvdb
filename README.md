@@ -102,6 +102,9 @@ If it's not what 1.9.3-pXXX just say
 
     rbenv rehash
 
+## Upgrading to Vagrant API version 2:
+
+Problem with NFS share. Just remove `/etc/exports` file.
 
 ## TODO
 
