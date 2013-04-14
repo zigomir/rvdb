@@ -18,7 +18,7 @@ First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http:
 If you don't have yet symlink for Vagrantfile from mri (or other) directory, create it
 
     ln -s ../Vagrantfile Vagrantfile  # *nix
-    mklink Vagrantfile ..\Vagrantfile # Windows (with admin privileges)
+    mklink Vagrantfile ..\Vagrantfile # Windows (cmd, not power shell, with admin privileges)
 
 Copy and edit settings file
 
@@ -79,6 +79,10 @@ and than run `vagrant provison`
 - linux user: `vagrant/vagrant`
 - postgres: `vagrant/vagrant`
 - mysql: `root/root`
+
+Connecting to postgres from command line:
+
+    sudo -u postgres psql
 
 # Possible issues
 

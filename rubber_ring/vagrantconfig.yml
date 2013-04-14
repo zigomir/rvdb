@@ -3,23 +3,22 @@
 # Don't change this; use vagrantconfig_local.yml to override these
 # settings instead.
 
-name: "torquebox"
+name: "rubber_ring"
 
-ruby: "torquebox"
+ruby: "mri"
+ruby_version: "2.0.0-p0"
 database: "postgres" # or "mysql"
 
 box_name: "precise64"
 box_url: "http://files.vagrantup.com/precise64.box"
 
-memory: 1024 # megabytes for VM
+memory: 512 # megabytes for VM
 guest_ip: "192.168.2.60"
 
 host_development_dir: "~/development"
 guest_development_dir: "/home/vagrant/development"
 
 ports:
- - {guest: 3000, host: 3000} # rails default
- - {guest: 8080, host: 8080} # torquebox default
- - {guest: 9990, host: 9990} # jBoss AS admin console
+  - {guest: 3000, host: 3000}
 
 timezone: "Europe/Ljubljana"

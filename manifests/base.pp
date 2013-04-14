@@ -1,6 +1,7 @@
 Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
 include misc
+include ohmyzsh
 
 if $ruby == 'mri' {
   rbenv::install { 'vagrant':
