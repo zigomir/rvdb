@@ -47,9 +47,9 @@ Vagrant.configure('2') do |config|
   config.vm.provision :shell, :inline => 'apt-get update --fix-missing'
 
   # run puppet modules
-  config.vm.provision :puppet, :module_path => '../modules' do |puppet|
+  config.vm.provision :puppet, :module_path => '~/.rvdb/modules' do |puppet|
     puppet.manifest_file  = 'base.pp'
-    puppet.manifests_path = '../manifests'
+    puppet.manifests_path = '~/.rvdb/manifests'
     puppet.facter         = {
       :ruby           => CONF['ruby'],
       :database       => CONF['database'],

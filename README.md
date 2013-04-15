@@ -13,19 +13,27 @@ Based on Vagrant and Precise64 (Ubuntu 12.04 x64 Server Edition)
 
 First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http://www.vagrantup.com/)
 
-## Vagrantfile
+## Setup
 
-If you don't have yet symlink for Vagrantfile from mri (or other) directory, create it
+This code needs to be in your home `.rvdb` directory
 
-    ln -s ../Vagrantfile Vagrantfile  # *nix
-    mklink Vagrantfile ..\Vagrantfile # Windows (cmd, not power shell, with admin privileges)
+    git clone git://github.com/zigomir/rvdb.git ~/.rvdb
 
-Copy and edit settings file
+Creating a symlink to `Vagrantfile`
+
+    cd project
+    mkdir vagrant
+    cd vagrant
+    ln -s ~/.rvdb/Vagrantfile Vagrantfile
+    # Windows (cmd, not power shell, with admin privileges)
+    mklink Vagrantfile C:\users\<your_username>\.rvdb\Vagrantfile
+
+Copy `vagrantconfig.example.yml` to your project `vagrant` dir and rename it to `vagrantconfig.yml`
+
+If you have special settings (different directory structure for project), different than your team mates, just
+create another file, named `vagrantconfig_local.yml` and edit your setting there.
 
 	cp vagrantconfig.yml vagrantconfig_local.yml
-
-Set your settings inside **vagrantconfig_local.yml**
-
 
 # Build mah machine
 Update git submodules
@@ -33,7 +41,7 @@ Update git submodules
     git submodule init
     git submodule update
 
-Change directory to your project folder (example: `cd rvdb/mri`)
+Change directory to your project folder
 
     vagrant up
 
