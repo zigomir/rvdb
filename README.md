@@ -123,7 +123,3 @@ If it's not what 1.9.3-pXXX just say
 
 Problem with NFS share. Just remove `/etc/exports` file.
 
-## TODO
-
-- try re adding TB because of newlines
-- better structure for new projects
