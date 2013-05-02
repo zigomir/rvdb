@@ -1,12 +1,20 @@
 class misc {
 
+  $toolsDirectory = "/home/vagrant/tools"
+
   $miscPackages = [
     "vim",
     "git",
-    "nodejs"
+    # rubber ring deps
+    "imagemagick",
+    "postgresql-contrib"
   ]
 
   package { $miscPackages:
     ensure => present
+  }
+
+  file { $toolsDirectory:
+    ensure => "directory"
   }
 }

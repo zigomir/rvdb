@@ -1,26 +1,15 @@
 Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
-include misc
+include misc, nodejs, phantomjs
 
-if $ruby == 'mri' {
-  rbenv::install { 'vagrant':
-    group => 'vagrant',
-    home  => '/home/vagrant'
-  }
-
-  rbenv::compile { $ruby_version:
-    user => 'vagrant',
-    home => '/home/vagrant'
-  }
+rbenv::install { 'vagrant':
+  group => 'vagrant',
+  home  => '/home/vagrant'
 }
 
-if $ruby == 'torquebox' {
-  torquebox::install { 'install-torquebox':
-    tb_version   => '2.3.0',
-    java_version => '7' # 6 or 7
-  }
-
-  include torquebox::config, torquebox::service
+rbenv::compile { $ruby_version:
+  user => 'vagrant',
+  home => '/home/vagrant'
 }
 
 if $database == 'mysql' {
