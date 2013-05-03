@@ -16,6 +16,12 @@ if $database == 'mysql' {
   include mysql
 }
 
+if $database == 'sqlite3' {
+  package { "libsqlite3-dev":
+    ensure => present
+  }
+}
+
 if $database == 'postgres' {
   class {'postgresql':  }
   class {'postgresql::server':

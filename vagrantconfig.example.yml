@@ -4,7 +4,7 @@ name: "project_name"
 
 ruby: "mri"
 ruby_version: "2.0.0-p0"
-database: "postgres" # or "mysql"
+database: "postgres" # or "mysql" or "sqlite3"
 
 box_name: "precise64"
 box_url: "http://files.vagrantup.com/precise64.box"

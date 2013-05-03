@@ -6,8 +6,7 @@ class misc {
     "vim",
     "git",
     # rubber ring deps
-    "imagemagick",
-    "libsqlite3-dev"
+    "imagemagick"
   ]
 
   package { $miscPackages:
