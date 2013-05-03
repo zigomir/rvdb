@@ -7,7 +7,7 @@ class misc {
     "git",
     # rubber ring deps
     "imagemagick",
-    "postgresql-contrib"
+    "libsqlite3-dev"
   ]
 
   package { $miscPackages:
