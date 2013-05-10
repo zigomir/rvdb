@@ -46,6 +46,10 @@ Vagrant.configure('2') do |config|
   # Update the server
   config.vm.provision :shell, :inline => 'apt-get update --fix-missing'
 
+  # Set SSH forwarding. Useful for deployment, so that you don't have to copy your private key to vagrant box.
+  # Connect to vagrant with `vagrant ssh -- -A` and your private key will be autoloaded to vagrant box.
+  config.ssh.forward_agent = true
+
   # run puppet modules
   config.vm.provision :puppet, :module_path => '~/.rvdb/modules' do |puppet|
     puppet.manifest_file  = 'base.pp'
