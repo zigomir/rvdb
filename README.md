@@ -19,21 +19,17 @@ This code needs to be in your home `.rvdb` directory
 
     git clone git://github.com/zigomir/rvdb.git ~/.rvdb
 
-Creating a symlink to `Vagrantfile`
+Run this to create project's `Vagrantfile` and `vagrantconfig.yml` files inside your project dir.
 
-    cd project
-    mkdir vagrant
-    cd vagrant
-    ln -s ~/.rvdb/Vagrantfile Vagrantfile
-    # Windows (cmd, not power shell, with admin privileges)
-    mklink Vagrantfile C:\users\<your_username>\.rvdb\Vagrantfile
+	cd /path/to/project
+  	~/.rvdb/vagrantify.sh .
 
-Copy `vagrantconfig.example.yml` to your project `vagrant` dir and rename it to `vagrantconfig.yml`
+If you are on Windows create project's `Vagrantfile` and `vagrantconfig.yml` file with copying by hand
 
-If you have special settings (different directory structure for project), different than your team mates, just
-create another file, named `vagrantconfig_local.yml` and edit your setting there.
+	cp ~/.rvdb/Vagrantfile.PROJECT path/to/project/Vagrantfile
+	cp ~/.rvdb/vagrantconfig.example.yml path/to/project/vagrantconfig.yml
 
-	cp vagrantconfig.yml vagrantconfig_local.yml
+If you have special settings (different directory structure for project), different than your team mates, just create another file, named `vagrantconfig_local.yml` and edit your setting there.
 
 # Build mah machine
 Update git submodules
