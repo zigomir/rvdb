@@ -4,10 +4,8 @@ Based on Vagrant and Precise64 (Ubuntu 12.04 x64 Server Edition)
 
 ## Installed software
 
-* rbenv and ruby-2.0.0-p0 or 1.9.3-pXXX
+* rbenv and ruby-2.0.0-p195 or 1.9.3-pXXX
 * postgres or mysql
-* git, node, vim
-* optional, not in by default: casperjs, todo...
 
 # Setting up machine
 
@@ -21,13 +19,13 @@ This code needs to be in your home `.rvdb` directory
 
 Run this to create project's `Vagrantfile` and `vagrantconfig.yml` files inside your project dir.
 
-	cd /path/to/project
-  	~/.rvdb/vagrantify.sh .
+    cd /path/to/project
+    ~/.rvdb/vagrantify.sh .
 
 If you are on Windows create project's `Vagrantfile` and `vagrantconfig.yml` file with copying by hand
 
-	cp ~/.rvdb/Vagrantfile.PROJECT path/to/project/Vagrantfile
-	cp ~/.rvdb/vagrantconfig.example.yml path/to/project/vagrantconfig.yml
+    cp ~/.rvdb/Vagrantfile.PROJECT path/to/project/Vagrantfile
+    cp ~/.rvdb/vagrantconfig.EXAMPLE.yml path/to/project/vagrantconfig.yml
 
 If you have special settings (different directory structure for project), different than your team mates, just create another file, named `vagrantconfig_local.yml` and edit your setting there.
 
@@ -60,62 +58,5 @@ Don't add puppet-rbenv to modules/puppet-rbenv ! it won't work because puppet mo
 Example of adding submodules:
 
     git submodule add git://github.com/alup/puppet-rbenv.git modules/rbenv
-    git submodule add git://github.com/zigomir/puppet-torquebox.git modules/torquebox
     git submodule add git://github.com/akumria/puppet-postgresql.git modules/postgresql
-
-If you want to push back to submodules uzse git@github.com:zigomir instead of git://github.com/zigomir
-
-## Updating Ruby
-
-Connect to your box and do this
-
-	cd ~/.rbenv/plugins/ruby-build
-	git pull --rebase
-
-Than update version in your base manifest file, example:
-
-	rbenv::compile { '2.0.0-p0':
-
-and than run `vagrant provison`
-
-# Passwords
-
-- linux user: `vagrant/vagrant`
-- postgres: `vagrant/vagrant`
-- mysql: `root/root`
-
-Connecting to postgres from command line:
-
-    sudo -u postgres psql
-
-# Possible issues
-
-## On Windows host machine
-Error with .rbenvrc
-
-    cd
-	sudo apt-get install dos2unix
-    dos2unix .rbenvrc
-    source .rbenvrc
-
-Always set CRLF to false, otherwise you'll get messed up bash files
-
-	git config --global core.eol lf
-	git config --global core.autocrlf false
-
-## Check selected ruby version
-
-    ruby -v
-
-If it's not what 1.9.3-pXXX just say
-
-    rbenv local 1.9.3-pXXX
-
-## Can't see newly installed bundles?
-
-    rbenv rehash
-
-## Upgrading to Vagrant API version 2:
-
-Problem with NFS share. Just remove `/etc/exports` file.
 

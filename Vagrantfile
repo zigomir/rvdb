@@ -55,9 +55,7 @@ Vagrant.configure('2') do |config|
     puppet.manifest_file  = 'base.pp'
     puppet.manifests_path = '~/.rvdb/manifests'
     puppet.facter         = {
-      :ruby           => CONF['ruby'],
-      :database       => CONF['database'],
-      :ruby_version   => CONF['ruby_version']
+      :conf => CONF['conf'] # pass all the configs to facter
     }
   end
 end

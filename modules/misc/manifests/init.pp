@@ -2,12 +2,7 @@ class misc {
 
   $toolsDirectory = "/home/vagrant/tools"
 
-  $miscPackages = [
-    "vim",
-    "git",
-    # rubber ring deps
-    "imagemagick"
-  ]
+  $miscPackages = get_fact_array($conf, 'packages')
 
   package { $miscPackages:
     ensure => present
