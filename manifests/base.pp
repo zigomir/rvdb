@@ -43,6 +43,7 @@ if fact_array_includes($databases, 'postgres') {
     password => 'vagrant',
     createdb   => true,
     createrole => true,
+    superuser  => true
   }
 
   package { 'libpq-dev':

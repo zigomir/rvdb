@@ -60,3 +60,13 @@ Example of adding submodules:
     git submodule add git://github.com/alup/puppet-rbenv.git modules/rbenv
     git submodule add git://github.com/akumria/puppet-postgresql.git modules/postgresql
 
+
+## Postgres
+
+Connecting to postgres from command line
+
+    sudo -u postgres psql
+
+If you want your user to be super user, connect to postgres and run
+
+    ALTER USER vagrant WITH SUPERUSER;
