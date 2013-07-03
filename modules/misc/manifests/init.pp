@@ -11,4 +11,10 @@ class misc {
   file { $toolsDirectory:
     ensure => "directory"
   }
+
+  file { ".gemrc":
+    path   => "/home/vagrant/.gemrc",
+    ensure => file,
+    source => 'puppet:///modules/misc/.gemrc',
+  }
 }
