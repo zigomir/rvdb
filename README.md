@@ -15,7 +15,7 @@ First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http:
 
 This code needs to be in your home `.rvdb` directory
 
-    git clone git://github.com/zigomir/rvdb.git ~/.rvdb
+    git clone git://github.com/zigomir/rvdb.git ~/.rvdb --recursive
 
 Run this to create project's `Vagrantfile` and `vagrantconfig.yml` files inside your project dir.
 
@@ -30,10 +30,6 @@ If you are on Windows create project's `Vagrantfile` and `vagrantconfig.yml` fil
 If you have special settings (different directory structure for project), different than your team mates, just create another file, named `vagrantconfig_local.yml` and edit your setting there.
 
 # Build mah machine
-Update git submodules
-
-    git submodule init
-    git submodule update
 
 Change directory to your project folder
 
