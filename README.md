@@ -4,8 +4,8 @@ Based on Vagrant and Precise64 (Ubuntu 12.04 x64 Server Edition)
 
 ## Installed software
 
-* rbenv and ruby-2.0.0-p195 or 1.9.3-pXXX
-* postgres or mysql
+* rbenv and ruby
+* postgres, sqlite3, mysql
 
 # Setting up machine
 
@@ -29,7 +29,7 @@ If you are on Windows create project's `Vagrantfile` and `vagrantconfig.yml` fil
 
 If you have special settings (different directory structure for project), different than your team mates, just create another file, named `vagrantconfig_local.yml` and edit your setting there.
 
-# Build mah machine
+# Build me machine
 
 Change directory to your project folder
 
@@ -40,7 +40,27 @@ First run may take time because it will go and download Ubuntu and set it all up
     vagrant ssh
     
 *vagrant ssh* won't work on Windows. Use [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
-and connect to guest ip you've set up in **vagrantconfig_local.yml** file. (Username and password are vagrant/vagrant)
+and connect to guest ip you've set up in **vagrantconfig_local.yml** file.
+
+Username and password are `vagrant/vagrant`
+
+## Databases
+
+### Postgres
+
+Credentials: `vagrant/vagrant`
+
+Connecting to postgres from command line
+
+    sudo -u postgres psql
+
+If you want your user to be super user, connect to postgres and run
+
+    ALTER USER vagrant WITH SUPERUSER;
+    
+### MySQL
+
+Credentials: `root/root`
 
 ## Puppet modules with git submodules
 
@@ -55,14 +75,3 @@ Example of adding submodules:
 
     git submodule add git://github.com/alup/puppet-rbenv.git modules/rbenv
     git submodule add git://github.com/akumria/puppet-postgresql.git modules/postgresql
-
-
-## Postgres
-
-Connecting to postgres from command line
-
-    sudo -u postgres psql
-
-If you want your user to be super user, connect to postgres and run
-
-    ALTER USER vagrant WITH SUPERUSER;
