@@ -27,11 +27,6 @@ Vagrant.configure('2') do |config|
   # Set IP you want to use for VirtualMachine
   config.vm.network :private_network, ip: CONF['guest_ip']
 
-  # Set the default project share to use nfs
-  config.vm.synced_folder CONF['host_development_dir'], 
-                          CONF['guest_development_dir'],
-                          :nfs => (RUBY_PLATFORM =~ /linux/ or RUBY_PLATFORM =~ /darwin/)
-
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
   CONF['ports'].each do |port|
