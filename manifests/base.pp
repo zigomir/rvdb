@@ -5,7 +5,6 @@ notice($conf)
 
 # include misc for parser functions to get configuration from facter variable $conf
 include misc
-#include nodejs, phantomjs
 
 rbenv::install { 'vagrant':
   group => 'vagrant',
@@ -16,6 +15,14 @@ $ruby_version = get_fact($conf, 'ruby_version')
 rbenv::compile { $ruby_version:
   user => 'vagrant',
   home => '/home/vagrant'
+}
+
+$modules = get_fact_array($conf, 'modules')
+if fact_array_includes($modules, 'nodejs') {
+  include nodejs
+}
+if fact_array_includes($modules, 'phantomjs') {
+  include phantomjs
 }
 
 $databases = get_fact_array($conf, 'databases')

@@ -17,6 +17,10 @@ conf:
     # - "imagemagick"
     # - ...
 
+  modules:
+    - "nodejs"
+    - "phantomjs"
+
 # All these are used inside Vagrantfile
 name: "project_name"
 
