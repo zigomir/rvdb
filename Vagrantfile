@@ -28,9 +28,8 @@ Vagrant.configure('2') do |config|
   config.vm.network :private_network, ip: CONF['guest_ip']
 
   # Set the default project share to use nfs
-  config.vm.synced_folder CONF['host_development_dir'], 
-                          CONF['guest_development_dir'],
-                          :nfs => (RUBY_PLATFORM =~ /linux/ or RUBY_PLATFORM =~ /darwin/)
+  nfs_enabled = (RUBY_PLATFORM =~ /linux/ or RUBY_PLATFORM =~ /darwin/)
+  config.vm.synced_folder '.', '/vagrant', :nfs => nfs_enabled
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.

@@ -3,7 +3,7 @@
 
 # conf gets passed to puppet scripts
 conf:
-  ruby_version: "2.0.0-p195"
+  ruby_version: "2.0.0-p247"
   databases:
     - "postgres"
   # or
@@ -25,9 +25,6 @@ box_url: "http://files.vagrantup.com/precise64.box"
 
 memory: 512 # megabytes for VM
 guest_ip: "192.168.2.60"
-
-host_development_dir: "~/path_to_your/project_dir"
-guest_development_dir: "/home/vagrant/project_dir"
 
 ports:
   - {guest: 3000, host: 3000} # rails default
