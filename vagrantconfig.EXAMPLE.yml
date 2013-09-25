@@ -21,6 +21,9 @@ conf:
     - "nodejs"
     - "phantomjs"
 
+  rubygems:
+    - "rails"
+
 # All these are used inside Vagrantfile
 name: "project_name"
 
