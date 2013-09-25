@@ -17,6 +17,12 @@ rbenv::compile { $ruby_version:
   home => '/home/vagrant'
 }
 
+$rubyGems = get_fact_array($conf, 'rubygems')
+rbenv::gem { $rubyGems:
+  user => 'vagrant',
+  ruby => $ruby_version,
+}
+
 $modules = get_fact_array($conf, 'modules')
 if fact_array_includes($modules, 'nodejs') {
   include nodejs
