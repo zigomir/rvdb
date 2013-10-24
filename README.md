@@ -2,30 +2,37 @@
 
 Based on Vagrant and Precise64 (Ubuntu 12.04 x64 Server Edition)
 
-## Installed software
+## Available software packages in a box
 
 * rbenv and ruby
 * postgres, sqlite3, mysql
 
-# Setting up machine
+## Setup
 
 First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http://www.vagrantup.com/)
 
-## Setup
+This repository needs to be in your home `.rvdb` directory
 
-This code needs to be in your home `.rvdb` directory
+```bash    
+git clone git://github.com/zigomir/rvdb.git ~/.rvdb --recursive
+```
 
-    git clone git://github.com/zigomir/rvdb.git ~/.rvdb --recursive
+## Using rvdb on your project
 
-Run this to create project's `Vagrantfile` and `vagrantconfig.yml` files inside your project dir.
+Create project's `Vagrantfile` and `vagrantconfig.yml` files inside your project dir with 
+`vagrantify.sh` script:
 
-    cd /path/to/project
-    ~/.rvdb/vagrantify.sh .
+```bash
+cd /path/to/project
+~/.rvdb/vagrantify.sh .
+```
 
 If you are on Windows create project's `Vagrantfile` and `vagrantconfig.yml` file with copying by hand
 
-    cp ~/.rvdb/Vagrantfile.PROJECT path/to/project/Vagrantfile
-    cp ~/.rvdb/vagrantconfig.EXAMPLE.yml path/to/project/vagrantconfig.yml
+```
+cp ~/.rvdb/Vagrantfile.PROJECT path/to/project/Vagrantfile
+cp ~/.rvdb/vagrantconfig.EXAMPLE.yml path/to/project/vagrantconfig.yml
+```
 
 If you have special settings (different directory structure for project), different than your team mates, just create another file, named `vagrantconfig_local.yml` and edit your setting there.
 
@@ -33,16 +40,15 @@ If you have special settings (different directory structure for project), differ
 
 Change directory to your project folder
 
-    vagrant up
+```bash
+vagrant up
+```
 
 First run may take time because it will go and download Ubuntu and set it all up
 
-    vagrant ssh
-    
-*vagrant ssh* won't work on Windows. Use [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
-and connect to guest ip you've set up in **vagrantconfig_local.yml** file.
-
-Username and password are `vagrant/vagrant`
+```bash
+vagrant ssh
+```
 
 ## Databases
 
@@ -52,11 +58,15 @@ Credentials: `vagrant/vagrant`
 
 Connecting to postgres from command line
 
-    sudo -u postgres psql
+```bash
+sudo -u postgres psql
+```
 
 If you want your user to be super user, connect to postgres and run
 
-    ALTER USER vagrant WITH SUPERUSER;
+```bash
+ALTER USER vagrant WITH SUPERUSER;
+```
     
 ### MySQL
 

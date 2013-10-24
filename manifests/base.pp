@@ -5,6 +5,7 @@ notice($conf)
 
 # include misc for parser functions to get configuration from facter variable $conf
 include misc
+include ohmyzsh
 
 rbenv::install { 'vagrant':
   group => 'vagrant',
