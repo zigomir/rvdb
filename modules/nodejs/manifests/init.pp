@@ -7,7 +7,7 @@ class nodejs {
   }
 
   exec { "add-nodejs-ppa":
-    command => "add-apt-repository ppa:chris-lea/node.js && apt-get update",
+    command => "add-apt-repository ppa:chris-lea/node.js",
     unless  => "grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/* | grep chris-lea",
     require => Package[$deps]
   }

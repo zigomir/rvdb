@@ -3,7 +3,7 @@
 
 # conf gets passed to puppet scripts
 conf:
-  ruby_version: "2.0.0-p247"
+
   databases:
     - "postgres"
   # or
@@ -20,7 +20,9 @@ conf:
   modules:
     - "nodejs"
     - "phantomjs"
+#    - "golang"
 
+  ruby_version: "2.0.0-p353"
   rubygems:
     - "rails"
 

@@ -1,6 +1,13 @@
 class ohmyzsh {
+
+  $deps = ["curl"]
+
+  package { $deps:
+    ensure => present
+  }
+
   # Install ZSH
-  package { 'zsh':
+  package { "zsh":
     ensure => latest,
   }
 
@@ -10,7 +17,7 @@ class ohmyzsh {
     user    => "vagrant",
     command => "git clone git://github.com/robbyrussell/oh-my-zsh.git /home/vagrant/.oh-my-zsh",
     creates => "/home/vagrant/.oh-my-zsh",
-    require => [Package['git'], Package['zsh'], Package['curl']]
+    require => [Package["git"], Package["zsh"], Package["curl"]]
   }
 
   # Set configuration
@@ -19,12 +26,12 @@ class ohmyzsh {
     content => template('ohmyzsh/zshrc.erb'),
     owner   => "vagrant",
     group   => "vagrant",
-    require => Exec['clone oh-my-zsh']
+    require => Exec["clone oh-my-zsh"],
   }
 
   # Set the shell
   exec { "chsh -s /usr/bin/zsh vagrant":
     unless  => "grep -E '^vagrant.+:/usr/bin/zsh$' /etc/passwd",
-    require => Package['zsh']
+    require => Package["zsh"],
   }
 }
