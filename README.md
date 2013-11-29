@@ -13,7 +13,7 @@ First install [VirtualBox](https://www.virtualbox.org/) and then [Vagrant](http:
 
 This repository needs to be in your home `.rvdb` directory
 
-```bash    
+```bash
 git clone git://github.com/zigomir/rvdb.git ~/.rvdb --recursive
 ```
 
